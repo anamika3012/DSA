@@ -1,1 +1,43 @@
+//leetcode Problem no -2149
+#include<iostream>
+#include<vector>
+using namespace std;
 
+//Rearrange the elements of the array by their sign alternatively
+vector<int> rearrangeArray(vector<int>& nums) {
+  vector<int> ans(nums.size(),0);
+  int i=0;
+  int j=1;
+  for(int index=0;index<nums.size();index++){
+      if(nums[index]>=0){
+          ans[i]=nums[index];
+           i+=2;}
+      else {
+          ans[j]=nums[index];
+          j+=2;
+          }
+    }
+    return ans;
+    }
+
+int main(){
+vector<int> nums;
+//take input
+cout<<"Enter size :"<<endl;
+int n;
+cin>>n;
+for(int i=0;i<n;i++){
+   int d;
+   cout<<"Enter element at index: "<<i;
+   cin>>d;
+   nums.push_back(d);
+}
+
+vector<int> nums2= rearrangeArray(nums);
+//printing new array
+for(int i=0;i<n;i++){
+   cout<<nums2[i]<<" ";
+}
+
+return 0;
+}
