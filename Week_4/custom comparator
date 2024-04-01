@@ -1,0 +1,82 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+// //print array
+// void print(vector<int> &v){
+//   int n=v.size();
+// for(int i=0;i<n;i++){
+//     cout<<v[i]<<" ";
+// }
+// cout<<endl;
+// }
+
+
+//print vector of vector
+void printvv(vector<vector<int>> &v){
+    int n=v.size();
+    for(int i=0;i<n;++i){
+        vector<int>&temp=v[i];
+        int a=temp[0];
+        int b=temp[1];
+        cout<<a<<" "<<b<<endl;
+    }
+    cout<<endl;
+}
+
+
+// comparator function for sorting of vector<vector> by 1st index
+bool mycomp1stindex(vector<int>&a, vector<int>&b){
+// return a[0]<b[0];  //sorting by 0th index in increasing order
+return a[1]<b[1]; //sorting by 1st index in increasing order
+}
+
+
+
+
+
+//comparator function
+bool mycomp(int &a,int &b){
+    // return a<b; //if a<b then returns true i.e. sorts in increasing order
+    return a>b;  //sorts in decreasing order
+}
+
+
+
+
+int main(){
+// vector<int> v={44,55,22,11,33};
+// // //increasing order using STL
+// // sort(v.begin(),v.end()); 
+
+
+// //decreasing order using STL
+// sort(v.begin(),v.end(),mycomp);
+// print(v);
+
+
+//sorting of vector<vector>
+vector<vector<int>>v;
+int n;
+cout<<"Enter size:\n";
+cin>>n;
+for(int i=0;i<n;i++){
+    int a,b;
+    cout<<"enter a,b :"<<endl;
+    cin>>a >>b;
+    vector<int> temp;
+    temp.push_back(a);
+   temp.push_back(b);
+    v.push_back(temp);
+}
+cout<<"Here are the values :"<<endl;
+printvv(v);
+cout<<"Sorted values by 0th index:"<<endl;
+sort(v.begin(),v.end());
+printvv(v);
+cout<<"Sorted values by 1st index:"<<endl;
+sort(v.begin(),v.end(),mycomp1stindex);
+printvv(v);
+    return 0;
+}
